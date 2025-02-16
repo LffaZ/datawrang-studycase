@@ -77,18 +77,16 @@ for row in rows:
         'tenure': f'{start_date} - {end_date}',
     }
     president_data.append(data)
-
     # Copy and save each pres with name, tl, masjab, url pict (if possible) 🐬
 
 for data in president_data:
     fam(data['name'])
+# Open each detail based on name inside url 🐬
 
 keys = president_data[0].keys()
-with open("data/wikipedia_data/presidents.csv", "w", newline="", encoding="utf-8") as f:
+with open("./data/wikipedia_data/presidents.csv", "w", newline="", encoding="utf-8") as f:
     writer = csv.DictWriter(f, fieldnames=keys)
     writer.writeheader()
     writer.writerows(president_data)
 
 driver.quit()
-
-# Open each detail based on name inside url 🐬

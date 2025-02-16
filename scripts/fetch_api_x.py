@@ -7,6 +7,7 @@ import http.client
 
 url = "https://api.x.com/2/tweets/search/recent"
 
+os.environ.clear()
 load_dotenv()
 headers = {"Authorization": f"Bearer {os.getenv("BEARER_TOKEN")}"}
 
@@ -34,7 +35,7 @@ try:
         try:
             data = response.json().get('data', [])
 
-            with open('/data/api_x_data/response.csv', 'w', newline='') as csvfile:
+            with open('./data/api_x_data/response.csv', 'w', newline='') as csvfile:
                 fieldnames = twt + user + place + media
                 writer = csv.DictWriter(csvfile, fieldnames=fieldnames, quotechar='"', quoting=csv.QUOTE_MINIMAL)
 
